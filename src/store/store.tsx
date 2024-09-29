@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "../slices/userSlices";
+import { userReducer } from "./reducers/userReducer";
 
 
 // Create the store with proper typing

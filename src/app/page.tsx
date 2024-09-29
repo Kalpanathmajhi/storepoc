@@ -1,12 +1,12 @@
 "use client";
-import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUsers,increment } from "./slices/userSlices";
-import type { RootState, AppDispatch } from "./store/store";
+import type { RootState, AppDispatch } from "../store/store";
+import { fetchUsers, increment } from "@/store/actions/action";
+import Link from "next/link";
 
-
-export default function Home() {
+const Home: React.FC = () => {
   const { users, loading, value } = useSelector((state: RootState) => state.user);
   
 
@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, [dispatch]);
+  }, []);
 
   return (
     <main>
@@ -26,10 +26,13 @@ export default function Home() {
       <p>{value}</p>
       <hr />
       <ul>
-        {users?.map((u: { id: Key | null | undefined; name: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }) => (
+        {/* {users?.map((u: { id: Key | null | undefined; name: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }) => (
           <li key={u.id}>{u.name}</li>
-        ))}
+         
+        ))} */}
       </ul>
+      <Link href="/user">Dashboard</Link>
     </main>
   );
 }
+export default Home

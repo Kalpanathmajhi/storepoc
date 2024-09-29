@@ -2,7 +2,7 @@
 
 import { Provider } from "react-redux";
 import { ReactNode } from "react";
-import { store } from "./store/store";
+import { store } from "../store/store";
 
 interface ReduxProviderProps {
   children: ReactNode;
